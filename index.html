@@ -182,7 +182,7 @@
 
 
     <div id="bg"
-        style="position:fixed;left:0;top:0;width:100%;height:100%;background-image:url('static/car.png');background-repeat:no-repeat;background-size:auto 100%;background-position:center center">
+        style="position:fixed;left:-10%;right:-10%;top:0;height:100%;background-repeat:no-repeat;background-size:auto 100%;background-position:center center">
     </div>
 
 
@@ -232,9 +232,15 @@
             if (screen_width > 500) {
                 pos_left = screen_width_half - ken_width;
                 pos_right = screen_width_half - ken_width;
+
+
+                $('#bg').css('background-image', "url('static/car.png')");
             } else {
                 pos_left = (ken_width / 4.5) * -1;
                 pos_right = (ken_width / 4.5) * -1;
+
+
+                $('#bg').css('background-image', "url('static/car_mobile.png')");
             }
 
 
