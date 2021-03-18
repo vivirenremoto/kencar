@@ -4,4 +4,4 @@
 
 [Autor](https://twitter.com/vivirenremoto)
 
-![Angry Ken Street Fighter Camera](https://vivirenremoto.github.io/kencar/static/social.jpg)
+![Angry Ken Street Fighter Camera](https://vivirenremoto.github.io/kencar/static/social.png)
