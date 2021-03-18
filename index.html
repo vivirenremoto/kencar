@@ -301,7 +301,7 @@
         }
 
 
-
+/*
         function utf8_to_b64(str) {
             return window.btoa(unescape(encodeURIComponent(str)));
         }
@@ -318,6 +318,7 @@
             }, 1000);
 
         }
+*/
 
         $(window).resize(function () {
             centerElements();
@@ -328,7 +329,9 @@
         function share() {
             var share_title = 'Angry Ken Street Fighter Camera';
             var share_url = 'https://vivirenremoto.github.io/kencar/';
-            var bg_url = $('#bg').css('background-image');
+            
+/*
+var bg_url = $('#bg').css('background-image');
 
 
             if (bg_url.indexOf('car3.png') == -1) {
@@ -345,7 +348,7 @@
 
             window.open(share_url);
 
-/*
+*/
 
 
             
@@ -357,9 +360,9 @@
                 });
 
             } else {
-                //window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(share_title) + '&tw_p=tweetbutton&url=' + encodeURIComponent(share_url));
+                window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(share_title) + '&tw_p=tweetbutton&url=' + encodeURIComponent(share_url));
             }
-*/
+
 
         }
 
