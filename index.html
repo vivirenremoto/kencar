@@ -301,24 +301,24 @@
         }
 
 
-/*
-        function utf8_to_b64(str) {
-            return window.btoa(unescape(encodeURIComponent(str)));
-        }
-
-        function b64_to_utf8(str) {
-            return decodeURIComponent(escape(window.atob(str)));
-        }
-
-        if (document.location.href.indexOf('?photo=') > -1) {
-            var img_code = b64_to_utf8(document.location.href.split('?photo=')[1]);
-
-            setTimeout(function () {
-                $('#bg').css('background-image', img_code).css('background-size', '100%');
-            }, 1000);
-
-        }
-*/
+        /*
+                function utf8_to_b64(str) {
+                    return window.btoa(unescape(encodeURIComponent(str)));
+                }
+        
+                function b64_to_utf8(str) {
+                    return decodeURIComponent(escape(window.atob(str)));
+                }
+        
+                if (document.location.href.indexOf('?photo=') > -1) {
+                    var img_code = b64_to_utf8(document.location.href.split('?photo=')[1]);
+        
+                    setTimeout(function () {
+                        $('#bg').css('background-image', img_code).css('background-size', '100%');
+                    }, 1000);
+        
+                }
+        */
 
         $(window).resize(function () {
             centerElements();
@@ -329,29 +329,29 @@
         function share() {
             var share_title = 'Angry Ken Street Fighter Camera';
             var share_url = 'https://vivirenremoto.github.io/kencar/';
+
+            /*
+            var bg_url = $('#bg').css('background-image');
             
-/*
-var bg_url = $('#bg').css('background-image');
-
-
-            if (bg_url.indexOf('car3.png') == -1) {
-
-
-//alert(bg_url);
-
-                share_url += '?photo=' + utf8_to_b64(bg_url);
-
-
-
-
-            }
-
-            window.open(share_url);
-
-*/
-
-
             
+                        if (bg_url.indexOf('car3.png') == -1) {
+            
+            
+            //alert(bg_url);
+            
+                            share_url += '?photo=' + utf8_to_b64(bg_url);
+            
+            
+            
+            
+                        }
+            
+                        window.open(share_url);
+            
+            */
+
+
+
 
             if (navigator.share) {
                 navigator.share({
@@ -487,7 +487,7 @@ var bg_url = $('#bg').css('background-image');
 
             input.onclick = function () {
                 if (!enabled) {
-                    alert('Por limitaciones técnicas en móvil solo funciona con chrome, en PC no hay problema');
+                    alert('Por limitaciones técnicas en móvil solo funciona con el navegador chrome, en PC no hay problema');
                 }
             };
 
