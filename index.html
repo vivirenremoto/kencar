@@ -204,8 +204,6 @@
 
     <script>
 
-        /////////////////////////
-
         var screen_width = $(document).width() + 50;
         var screen_width_half = screen_width / 2;
         var music_playing1 = false;
@@ -215,6 +213,7 @@
         var punch2 = document.getElementById('bg_punch2');
         var action_previous = false;
         music1.volume = 0.2;
+        var hits = 0;
 
         var pos_left = 0;
         var pos_right = 0;
@@ -303,7 +302,8 @@
 
             $('#ken').addClass(class_action);
 
-            if (e.pageX < screen_width_half) {
+            if (hits % 4 == 0) {
+                //if (e.pageX < screen_width_half) {
                 $('#ken').removeClass('flip-horizontal').css('left', pos_left);
             } else {
                 $('#ken').addClass('flip-horizontal').css('right', pos_right);
@@ -319,6 +319,8 @@
 
 
             }, 200);
+
+            hits++;
         });
 
 
