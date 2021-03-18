@@ -166,9 +166,8 @@
     </div>
 
 
-    <form runat="server"
-        style="position:fixed;z-index:5;bottom:0;left:0;width:100%;background:white;text-align:center;">
-        <input type='file' id="imgInp"
+    <form style="position:fixed;z-index:5;bottom:0;left:0;width:100%;background:white;text-align:center;">
+        <input type='file' id="imgInp" accept="image/*"
             style="left:0;background:red;width:100%;height:50px;position:absolute;opacity:0;" />
         <svg xmlns="http://www.w3.org/2000/svg" style="position:relative;margin-top:-5px;margin-right:5px;" width="30"
             height="30" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
@@ -203,7 +202,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <script>
-        var input = document.querySelector('input[type=file]');
+        var input = document.querySelector('#imgInp');
 
 
 
