@@ -21,7 +21,8 @@
     <link rel="prefetch" href="static/normal.png" />
     <link rel="prefetch" href="static/punch.png" />
     <link rel="prefetch" href="static/kick.png" />
-    <link rel="prefetch" href="static/car.png" />
+    <link rel="prefetch" href="static/car2.png" />
+    <link rel="prefetch" href="static/car_mobile.png" />
 
 
 
@@ -151,19 +152,53 @@
                 transform: translate(25px, -2px) rotate(-1deg);
             }
         }
+
+        #bg {
+            left: 0;
+            right: 0;
+        }
+
+        @media screen and (max-width: 480px) {
+
+            #bg {
+                left: -10%;
+                right: -10%;
+            }
+
+        }
+
+
+        /*firefox hack*/
+
+        #ken,
+        #bg {
+            image-rendering: pixelated;
+        }
+
+        @-moz-document url-prefix() {
+
+            #bg {
+                image-rendering: crisp-edges;
+            }
+
+            #ken {
+                image-rendering: crisp-edges;
+            }
+
+        }
     </style>
 
 
     <a href="https://twitter.com/vivirenremoto" target="_blank"
         style="z-index:5;left:0;top:0;width:100%;text-align:right;background-image: linear-gradient(black, transparent);color:white;text-decoration:none;position:fixed;">by
-        vivirenremoto</a>
+        vivirenremoto&nbsp;</a>
 
 
     <div id="canvas" style="z-index:4;left:0;top:0;width:100%;height:100%;position:fixed;"></div>
 
 
     <div id="ken" class="ken_normal"
-        style="z-index:3;image-rendering: crisp-edges;background-size:100%; position:fixed;left:0;top:50%;width:250px;height:299px;margin-top:-150px;">
+        style="z-index:3;background-size:100%; position:fixed;left:0;top:50%;width:250px;height:299px;margin-top:-150px;">
     </div>
 
 
@@ -182,8 +217,14 @@
 
 
     <div id="bg"
-        style="position:fixed;left:-10%;right:-10%;top:0;height:100%;background-repeat:no-repeat;background-size:auto 100%;background-position:center center">
+        style="z-index:1;position:fixed;top:0;height:100%;background-repeat:no-repeat;background-size:100% auto;background-position:center center">
     </div>
+
+
+    <div style="position:fixed;background:#6e8f9f;width:100%;height:50%;top:0;"></div>
+    <div style="position:fixed;background:#f9edca;width:100%;height:50%;top:50%;"></div>
+
+
 
 
     <audio id="bg_music1" loop>
@@ -234,7 +275,7 @@
                 pos_right = screen_width_half - ken_width;
 
 
-                $('#bg').css('background-image', "url('static/car.png')");
+                $('#bg').css('background-image', "url('static/car2.png')");
             } else {
                 pos_left = (ken_width / 4.5) * -1;
                 pos_right = (ken_width / 4.5) * -1;
