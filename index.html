@@ -189,10 +189,21 @@
     </style>
 
 
-    <a href="https://twitter.com/vivirenremoto" target="_blank"
-        style="z-index:5;left:0;top:0;width:100%;text-align:right;background-image: linear-gradient(black, transparent);color:white;text-decoration:none;position:fixed;">by
-        vivirenremoto&nbsp;</a>
+    <div
+        style="z-index:5;left:0;top:0;width:100%;text-align:right;background-image: linear-gradient(black, transparent);position:fixed;">
 
+
+        <a href="javascript:share();" style="margin-left:5px;float:left;color:white;text-decoration:none;">COMPARTIR</a>
+
+
+        <a href="https://twitter.com/vivirenremoto" target="_blank"
+            style="margin-right:5px;float:right;color:white;text-decoration:none;">by
+            vivirenremoto</a>
+        <br style="clear:both;">
+
+
+
+    </div>
 
     <div id="canvas" style="z-index:4;left:0;top:0;width:100%;height:100%;position:fixed;"></div>
 
@@ -286,11 +297,59 @@
             $('#ken').css('left', pos_left);
 
 
+
+        }
+
+
+
+        function utf8_to_b64(str) {
+            return window.btoa(unescape(encodeURIComponent(str)));
+        }
+
+        function b64_to_utf8(str) {
+            return decodeURIComponent(escape(window.atob(str)));
+        }
+
+        if (document.location.href.indexOf('?photo=') > -1) {
+            var img_code = b64_to_utf8(document.location.href.split('?photo=')[1]);
+
+            setTimeout(function () {
+                $('#bg').css('background-image', img_code).css('background-size', '100%');
+            }, 1000);
+
         }
 
         $(window).resize(function () {
             centerElements();
         });
+
+
+
+        function share() {
+            var share_title = 'Angry Ken Street Fighter Camera';
+            var share_url = 'https://vivirenremoto.github.io/kencar/';
+            var bg_url = $('#bg').css('background-image');
+
+
+            if (bg_url.indexOf('car3.png') == -1) {
+                share_url += '?photo=' + utf8_to_b64(bg_url);
+            }
+
+
+            window.open(share_url);
+
+            if (navigator.share) {
+                navigator.share({
+                    title: share_title,
+                    url: share_url
+                });
+
+            } else {
+                window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(share_title) + '&tw_p=tweetbutton&url=' + encodeURIComponent(share_url));
+            }
+
+
+        }
 
 
         function randomNumber(min, max) {
