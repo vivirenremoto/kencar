@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ken Street Fighter Hits Camera by vivirenremoto</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+
+
+    <link rel="prefetch" href="static/music.mp3" />
+    <link rel="prefetch" href="static/punch1.mp3" />
+    <link rel="prefetch" href="static/punch2.mp3" />
+    <link rel="prefetch" href="static/normal.png" />
+    <link rel="prefetch" href="static/punch.png" />
+    <link rel="prefetch" href="static/kick.png" />
+    <link rel="prefetch" href="static/car.png" />
+
+
+
+    <meta property="og:image" content="https://vivirenremoto.github.io/kencar/static/social.jpg">
+    <meta property="og:image:secure_url" content="https://vivirenremoto.github.io/kencar/static/social.jpg">
+    <meta property="og:image:alt" content="Ken Street Fighter Hits Camera">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ken Street Fighter Hits Camera">
+    <meta name="twitter:image" content="https://vivirenremoto.github.io/kencar/static/social.jpg">
+
+</head>
+
+<body>
+
+    <style>
+        * {
+            font-family: 'VT323', monospace;
+            text-transform: uppercase;
+            font-size: 30px;
+
+            -webkit-touch-callout: none;
+            /* iOS Safari */
+            -webkit-user-select: none;
+            /* Safari */
+            -khtml-user-select: none;
+            /* Konqueror HTML */
+            -moz-user-select: none;
+            /* Old versions of Firefox */
+            -ms-user-select: none;
+            /* Internet Explorer/Edge */
+            user-select: none;
+            /* Non-prefixed version, currently
+                            supported by Chrome, Edge, Opera and Firefox */
+        }
+
+        body {
+            touch-action: pan-x pan-y;
+            background: black;
+        }
+
+        .ken_normal {
+            background-image: url('static/normal.png');
+        }
+
+        .ken_punch {
+            background-image: url('static/punch.png');
+        }
+
+        .ken_kick {
+            background-image: url('static/kick.png');
+        }
+
+        .flip-horizontal {
+            left: auto !important;
+            right: 0;
+            -moz-transform: scaleX(-1);
+            -webkit-transform: scaleX(-1);
+            -o-transform: scaleX(-1);
+            transform: scaleX(-1);
+            -ms-filter: fliph;
+            /*IE*/
+            filter: fliph;
+            /*IE*/
+        }
+
+
+
+        .shake {
+            animation: shake 0.5s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translate(25px, 25px) rotate(0deg);
+            }
+
+            10% {
+                transform: translate(-25px, -2px) rotate(-1deg);
+            }
+
+            20% {
+                transform: translate(-3px, 0px) rotate(1deg);
+            }
+
+            30% {
+                transform: translate(3px, 2px) rotate(0deg);
+            }
+
+            40% {
+                transform: translate(25px, -25px) rotate(1deg);
+            }
+
+            50% {
+                transform: translate(-25px, 2px) rotate(-1deg);
+            }
+
+            60% {
+                transform: translate(-3px, 25px) rotate(0deg);
+            }
+
+            70% {
+                transform: translate(3px, 25px) rotate(-1deg);
+            }
+
+            80% {
+                transform: translate(-25px, -25px) rotate(1deg);
+            }
+
+            90% {
+                transform: translate(25px, 2px) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(25px, -2px) rotate(-1deg);
+            }
+        }
+    </style>
+
+
+    <a href="https://twitter.com/vivirenremoto" target="_blank"
+        style="z-index:5;right:0;top:0;color:black;text-decoration:none;position:fixed;">by vivirenremoto</a>
+
+
+    <div id="canvas" style="z-index:4;left:0;top:0;width:100%;height:100%;position:fixed;"></div>
+
+
+    <div id="ken" class="ken_normal"
+        style="z-index:3;image-rendering: crisp-edges;background-size:100%; position:fixed;left:0;top:50%;width:250px;height:299px;margin-top:-150px;">
+    </div>
+
+
+    <form runat="server"
+        style="position:fixed;z-index:5;bottom:0;left:0;width:100%;background:white;text-align:center;">
+        <input type='file' id="imgInp"
+            style="left:0;background:red;width:100%;height:50px;position:absolute;opacity:0;" />
+        <svg xmlns="http://www.w3.org/2000/svg" style="position:relative;margin-top:-5px;margin-right:5px;" width="30"
+            height="30" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
+            <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+            <path
+                d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z" />
+        </svg> Seleccionar foto
+    </form>
+
+
+
+
+    <div id="bg"
+        style="position:fixed;left:0;top:0;width:100%;height:100%;background-image:url('static/car.png');background-repeat:no-repeat;background-size:auto 100%;background-position:center center">
+    </div>
+
+
+    <audio id="bg_music1" loop>
+        <source src="static/music.mp3" type="audio/mp3">
+    </audio>
+
+    <audio id="bg_punch1">
+        <source src="static/punch1.mp3" type="audio/mp3">
+    </audio>
+
+    <audio id="bg_punch2">
+        <source src="static/punch2.mp3" type="audio/mp3">
+    </audio>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+        var input = document.querySelector('input[type=file]');
+
+
+
+
+        input.onchange = function () {
+            var file = input.files[0];
+
+
+
+            drawOnCanvas(file);
+        };
+
+        function drawOnCanvas(file) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+
+
+
+
+                var dataURL = e.target.result;
+                $('#bg').css('background-image', 'url(' + dataURL + ')');
+
+
+            };
+
+            reader.readAsDataURL(file);
+        }
+
+        /////////////////////////
+
+        var screen_width = $(document).width() + 50;
+        var screen_width_half = screen_width / 2;
+        var music_playing1 = false;
+        var ken_width = parseInt($('#ken').css('width'));
+        var music1 = document.getElementById('bg_music1');
+        var punch1 = document.getElementById('bg_punch1');
+        var punch2 = document.getElementById('bg_punch2');
+        var action_previous = false;
+        music1.volume = 0.2;
+
+        var pos_left = 0;
+        var pos_right = 0;
+
+
+
+
+        function centerElements() {
+
+            screen_height = $(document).height();
+            screen_width = $(document).width() - 300;
+            screen_width_half = screen_width / 2;
+
+
+
+            if (screen_width > 500) {
+                pos_left = screen_width_half - ken_width;
+                pos_right = screen_width_half - ken_width;
+            } else {
+                pos_left = (ken_width / 4.5) * -1;
+                pos_right = (ken_width / 4.5) * -1;
+            }
+
+
+
+            $('#ken').css('left', pos_left);
+
+
+        }
+
+        $(window).resize(function () {
+            centerElements();
+        });
+
+
+        function randomNumber(min, max) {
+            if (min > max) {
+                let temp = max;
+                max = min;
+                min = temp;
+            }
+
+            if (min <= 0) {
+                return Math.floor(Math.random() * (max + Math.abs(min) + 1)) + min;
+            } else {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+        }
+
+
+        $('#canvas').click(function (e) {
+
+            if (!music_playing1) {
+                music_playing1 = true;
+                music1.play();
+            }
+
+
+
+            if (!music_playing1) {
+                music_playing1 = true;
+                music1.play();
+            }
+
+            $('#ken').removeClass('ken_normal');
+            var actions = ['ken_punch', 'ken_kick'];
+            var action = randomNumber(0, 1);
+
+            if (action_previous == action && action == 1) {
+                action = 0;
+
+                punch1.play();
+            } else if (action_previous == action && action == 0) {
+                action = 1;
+
+                punch2.play();
+            }
+
+
+            $('#bg').addClass('shake');
+
+            action_previous = action;
+
+            class_action = actions[action];
+
+
+            $('#ken').addClass(class_action);
+
+            if (e.pageX < screen_width_half) {
+                $('#ken').removeClass('flip-horizontal').css('left', pos_left);
+            } else {
+                $('#ken').addClass('flip-horizontal').css('right', pos_right);
+
+            }
+
+            setTimeout(function () {
+                $('#bg').removeClass('shake');
+
+                $('#ken').removeClass(class_action);
+
+                $('#ken').addClass('ken_normal');
+
+
+            }, 200);
+        });
+
+
+
+
+        centerElements();
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
